@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Игра "Тупой или не тупой?"</title>
+  <style>
+    /* Общие стили */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #game-container {
+      background-color: #1f1f1f;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      background-color: #4caf50;
+      color: #fff;
+      border: 2px solid #4caf50;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    /* Стили для мобильных устройств */
+    @media screen and (max-width: 600px) {
+      #game-container {
+        padding: 15px;
+      }
+
+      button {
+        padding: 12px 20px;
+        font-size: 16px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+
+    /* Стили для текста в модальном окне */
+    .modal-content p {
+      font-size: 24px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+<div id="game-container">
+  <h2>Ответьте на вопрос: Тупой ли Бексунтай?</h2>
+  <button class="btn-3d btn-3d-yes" onclick="checkAnswer('да')">Да</button>
+  <button class="btn-3d btn-3d-no" onclick="checkAnswer('нет')">Нет</button>
+  <img id="result-image" src="" alt="Результат" style="display: none;">
+  <p id="wrong-answer" style="display: none;">На самом он дебил</p>
+</div>
+
+<!-- Модальное окно -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <p>На самом он дебил</p>
+  </div>
+</div>
+
+<script>
+  function checkAnswer(answer) {
+    var userAnswer = answer.toLowerCase();
+    var resultImage = document.getElementById("result-image");
+    var modal = document.getElementById("myModal");
+    var wrongAnswerText = document.getElementById("wrong-answer");
+
+    if (userAnswer === "да") {
+      resultImage.style.display = "block";
+      resultImage.src = "https://drive.google.com/uc?export=view&id=1DT64L0A7R5AkMUTzCqmcjo9fHpEH2F-H";
+      wrongAnswerText.style.display = "none";
+    } else {
+      resultImage.style.display = "none";
+      wrongAnswerText.style.display = "block";
+      modal.style.display = "block";
+    }
+  }
+
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+
+  window.addEventListener('beforeunload', function (e) {
+    e.preventDefault();
+    e.returnValue = '';
+  });
+</script>
+
+</body>
+</html>
